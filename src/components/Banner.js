@@ -12,11 +12,11 @@ export const Banner = () =>
             showThumbs={false}
             interval={3000}
         >
-        <div>
-            <img loading="lazy" src="https://links.papareact.com/6ff" alt=""/>
-        </div>
-        <div>
-            <img loading="lazy" src="https://links.papareact.com/7ma" alt=""/>
-        </div>
+            <div>
+                <img loading="lazy" src="https://links.papareact.com/6ff" alt=""/>
+            </div>
+            <div>
+                <img loading="lazy" src="https://links.papareact.com/7ma" alt=""/>
+            </div>
         </Carousel>
     </div>
