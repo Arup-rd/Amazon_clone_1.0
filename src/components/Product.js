@@ -6,7 +6,7 @@ import { useState } from "react";
 const MAX_RATING = 5
 const MIN_RATING = 1
 
-export function Product ({id, title, description,price,category,image}){
+export function Product({id, title, description,price,category,image}){
 
     const [Rating] = useState(
         Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
@@ -17,6 +17,7 @@ export function Product ({id, title, description,price,category,image}){
     return (<div className="relative flex flex-col m-5 bg-white z-30 p-10">
                 <p className="absolute top-2 right-2 text-xs italic text-gray-400">{category}</p>
                 <Image 
+                    alt=""
                     src={image}
                     height={200}
                     width={200} 
@@ -27,7 +28,7 @@ export function Product ({id, title, description,price,category,image}){
                     { Array(Rating)
                         .fill()
                         .map((_,i) => (
-                        <StarIcon className="h-5 text-yellow-500"/>
+                        <StarIcon key={i} className="h-5 text-yellow-500"/>
                     ))
                     }
                 </div>
@@ -41,7 +42,6 @@ export function Product ({id, title, description,price,category,image}){
                         <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
                     </div>
                 )}
-
                 <button className="mt-auto button">Add to Busket</button>
             </div>)
 }

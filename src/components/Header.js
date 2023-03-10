@@ -1,17 +1,22 @@
 import Image from "next/image";
 import { MenuIcon, SearchIcon, ShoppingCartIcon } from '@heroicons/react/outline';
+import {signIn,signOut,useSession } from 'next-auth/react'
 
-export const Header = () => 
-    <header>
+export const Header = () => {
+   const {data: session} = useSession()
+
+   return  <header>
         {/* Top nav bar */}
         <div className="flex items-center bg-amazon_blue p-1 flex-grow py-2">
             <div  className="flex items-center flex-grow sm:flex-grow-0">
                 <Image
                     src="https://links.papareact.com/f90"
+                    alt=""
                     height = {35}
                     width = {140}
-                    className="cursor-pointer mr-4 mt-2 ml-2"
+                    className="cursor-pointer mr-2 mt-2 ml-2"
                 />
+                <p className="text-white font-extrabold md:text-sm mt-2 mr-2">Clone</p>
             </div>
 
             {/* search bar */}
@@ -21,11 +26,10 @@ export const Header = () =>
             </div>
 
             {/* Right */}
-            <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
+            <div onClick={!session ? signIn : signOut} className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
                 <div className="link">
-                    <p>Hello World!</p>
+                    <p>{session ? `Hello, ${session.user.name}` : 'Sign In'}</p>
                     <p className="font-extrabold md:text-sm">Accounts & Lists</p>
-
                 </div>
                 <div className="link">
                     <p>Returns</p>
@@ -56,3 +60,4 @@ export const Header = () =>
             <p className="link hidden lg:inline-flex">Health and personal care</p>
         </div>
     </header> 
+}
