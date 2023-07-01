@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { CheckoutProduct } from '../components/checkoutProduct';
-import {Header} from '../components/Header'
+import {Header} from '../components/Header';
 import { selectItems, selectTotal } from '../slices/basketSlice';
 import Currency from 'react-currency-formatter';
 import { useSession } from 'next-auth/react';
@@ -18,7 +18,7 @@ function Checkout() {
     const createCheckoutSession = async () => {
         const stripe = await stripePromise
 
-        const checkoutSession = await axios.post('./api/auth/create_checkout',{
+        const checkoutSession = await axios.post('./api/create_checkout',{
             items: items,
             email: session.user.email
         })
